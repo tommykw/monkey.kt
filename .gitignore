@@ -2,8 +2,6 @@
 .idea
 build
 out
-build/
-.gradle/
 
 *.iws
 *.iml
