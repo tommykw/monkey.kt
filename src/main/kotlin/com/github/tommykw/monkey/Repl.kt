@@ -1,15 +1,21 @@
 package com.github.tommykw.monkey
 
-import java.io.InputStream
-import java.io.PrintStream
 import java.util.*
 
-fun start(input: InputStream, output: PrintStream) {
+fun runRepl() {
+    val input = System.`in`
     val scanner = Scanner(input)
-    output.print(">> ")
-    val constants = mutableListOf<MObject>()
-    val globals = mutableListOf<MObject>()
-    val symbolTable = SymbolTable()
 
-    //val symbolTable = Symbol
+    while (scanner.hasNext()) {
+        val code = scanner.nextLine()
+        val lexer = Lexer(code)
+        end@ while (true) {
+            val token = lexer.nextToken()
+            if (token.type == TokenType.EOF) {
+                break@end
+            } else {
+                println(token)
+            }
+        }
+    }
 }
