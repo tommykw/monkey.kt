@@ -9,6 +9,9 @@ fun runRepl() {
     while (scanner.hasNext()) {
         val code = scanner.nextLine()
         val lexer = Lexer(code)
+        val parser = Parser(lexer)
+        val program = parser.parseProgram()
+
         end@ while (true) {
             val token = lexer.nextToken()
             if (token.type == TokenType.EOF) {
@@ -17,5 +20,7 @@ fun runRepl() {
                 println(token)
             }
         }
+
+        println(program.toString())
     }
 }
