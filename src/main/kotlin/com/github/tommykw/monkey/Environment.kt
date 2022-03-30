@@ -1,6 +1,6 @@
 package com.github.tommykw.monkey
 
-class Environment(val store: MutableMap<String, Any>, val outer: Environment?) {
+class Environment(val store: MutableMap<String, MonkeyObject>, val outer: Environment?) {
     companion object {
         fun new(): Environment {
             return Environment(mutableMapOf(), null)
@@ -11,16 +11,16 @@ class Environment(val store: MutableMap<String, Any>, val outer: Environment?) {
         }
     }
 
-    operator fun set(name: String, value: Any) {
+    operator fun set(name: String, value: MonkeyObject) {
         store[name] = value
     }
 
-    fun put(name: String, value: Any): Any {
+    fun put(name: String, value: MonkeyObject): MonkeyObject {
         this[name] = value
         return value
     }
 
-    operator fun get(name: String): Any? {
+    operator fun get(name: String): MonkeyObject? {
         val obj = store[name]
         if (obj == null && outer != null) {
             return outer[name]
