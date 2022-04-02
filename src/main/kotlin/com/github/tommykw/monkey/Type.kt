@@ -105,7 +105,7 @@ object MonkeyNull : MonkeyObject {
     }
 }
 
-class MonkeyFunction(val parameters: List<String>, val body: MonkeyObject, val env: Environment) : MonkeyObject {
+class MonkeyFunction(val parameters: List<Identifier>?, val body: BlockStatement, val env: Environment) : MonkeyObject {
     override fun getType(): ObjectType {
         return ObjectType.FUNCTION
     }
