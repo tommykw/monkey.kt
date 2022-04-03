@@ -111,6 +111,6 @@ class MonkeyFunction(val parameters: List<Identifier>?, val body: BlockStatement
     }
 
     override fun inspect(): String {
-        return "fn(${parameters.joinToString(", ")})"
+        return "fn(${parameters?.joinToString(", ")})"
     }
 }
