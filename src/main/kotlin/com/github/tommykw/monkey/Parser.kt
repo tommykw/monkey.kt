@@ -199,6 +199,7 @@ class Parser(val lexer: Lexer) {
         val token = currentToken
         val literal = token.literal
         val precedence = findPrecedence(currentToken.type)
+        nextToken()
         val right = parseExpression(precedence)
         return InfixExpression(token, left, literal, right)
     }
